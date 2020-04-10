@@ -6,12 +6,9 @@ using namespace cv;
 
 int main()
 {
-	cv::Mat srcMat = imread("metal-part-distorted-03.png", 0);
-	cv::Mat binMat, dstMat;
+	cv::Mat srcMat = imread("metal-part-distorted-03.png", 1);
+	cv::Mat dstMat;
 	cv::Mat dx, dy;
-
-	//二值化
-	threshold(srcMat, binMat, 100, 255, THRESH_BINARY);
 
 	//边缘提取
 	cv::Sobel(srcMat, dx, CV_16SC1, 1, 0, 3, 1, 0, BORDER_DEFAULT);
@@ -40,7 +37,6 @@ int main()
 	}
 
 	imshow("srcMat", srcMat);
-	imshow("binMat", binMat);
 	imshow("dstMat", dstMat);
 	waitKey(0);
 }
